@@ -3,10 +3,22 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserExceprion } from './exeption/users.exeption';
 import { v4 as uuid } from 'uuid';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from './entities/user.entity';
+import { Repository } from 'typeorm';
 
 
 @Injectable()
 export class UsersService {
+
+  constructor(@InjectRepository(User)
+  private readonly userRepository: Repository<User>,
+  ) {}
+
+  getList(): Promise<User[]> {
+    return this.userRepository.find();
+  }
+
   private users: CreateUserDto[] = [];
   
   create(createUserDto: CreateUserDto): CreateUserDto {
@@ -54,5 +66,9 @@ export class UsersService {
     }
 
     this.users = result;
+  }
+
+  createOrder(data) {
+    return data;
   }
 }
