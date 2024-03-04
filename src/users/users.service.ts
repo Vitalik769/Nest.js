@@ -40,16 +40,6 @@ export class UsersService {
       throw new UserExceprion('Such id does not exist');
     }
   }
-
-  // update(id: string, updateMonPlanDto: UpdateMonPlanDto): void {
-  //   const pid: UpdateMonPlanDto[] = this.users.filter((c) => c.id !== id);
-
-  //   pid.push({
-  //     id: id,
-  //     ...updateMonPlanDto,
-  //   });
-  //   this.users = pid;
-  // }
   
   update(id: string, updateMonPlanDto: UpdateUserDto): void {
     const pid = this.users.findIndex((p) => p.id == id);

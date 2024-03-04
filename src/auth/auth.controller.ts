@@ -4,7 +4,7 @@ import { AuthDto } from './dto';
 import { Tokens } from './types';
 import { AtGuard, RtGuard } from 'src/common/guards';
 import { GetCurrentUser, GetCurrentUserId, Public } from 'src/common/decorators';
-import { RolesGuard } from './guard/roles.guard';
+// import { RolesGuard } from './guard/roles.guard';
 import { RolesDecorator  } from './decorator/roles.decorator';
 import { Roles } from './enum/roles.enum';
 
@@ -13,7 +13,7 @@ export class AuthController {
     constructor(private authService: AuthService) {}
 
     @Public()
-    @RolesDecorator(Roles.USER)
+    // @RolesDecorator(Roles.USER)
     @Post('local/signup')
     @HttpCode(HttpStatus.CREATED)
     signupLocal(@Body() dto: AuthDto): Promise<Tokens> {
@@ -21,7 +21,7 @@ export class AuthController {
     }
 
     @Public()
-    @RolesDecorator(Roles.USER)
+    // @RolesDecorator(Roles.USER)
     @Post('local/signin')
     @HttpCode(HttpStatus.OK)
     signinLocal(@Body() dto: AuthDto): Promise<Tokens> {

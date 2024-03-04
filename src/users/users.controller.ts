@@ -26,11 +26,8 @@ export class UsersController {
           console.log('completed');
         },
         error: (err) => {
-
         },
       });
-
-
     return createdOrder;
   }
 
